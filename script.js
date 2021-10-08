@@ -25,13 +25,13 @@ function validarCPF(cpf_cnpj) {
     cpf == "99999999999"
   )
     return false;
-  // Valida 1o digito
+  // Valida 1º digito
   add = 0;
   for (i = 0; i < 9; i++) add += parseInt(cpf.charAt(i)) * (10 - i);
   rev = 11 - (add % 11);
   if (rev == 10 || rev == 11) rev = 0;
   if (rev != parseInt(cpf.charAt(9))) return false;
-  // Valida 2o digito
+  // Valida 2º digito
   add = 0;
   for (i = 0; i < 10; i++) add += parseInt(cpf.charAt(i)) * (11 - i);
   rev = 11 - (add % 11);
@@ -63,7 +63,7 @@ function validarCNPJ(cpf_cnpj) {
   )
     return false;
 
-  // Valida DVs
+  // Valida 1º digito
   tamanho = cnpj.length - 2;
   numeros = cnpj.substring(0, tamanho);
   digitos = cnpj.substring(tamanho);
@@ -75,7 +75,7 @@ function validarCNPJ(cpf_cnpj) {
   }
   resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
   if (resultado != digitos.charAt(0)) return false;
-
+  // Valida 2º digito
   tamanho = tamanho + 1;
   numeros = cnpj.substring(0, tamanho);
   soma = 0;
